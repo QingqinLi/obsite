@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <title>edit_author</title>
+    <style>
+        .panel {
+            margin-top: 80px;
+        }
+
+        .input-group {
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container row">
+    <div class="col-md-4 col-md-offset-4 row panel">
+        <div>
+            <h3 class="text-center">编辑作者</h3>
+            <form class="form-horizontal" action="/edit_author/?id={{ author_obj.id }}" method="post">
+                {#    <h2 class="col-md-2 control-label">添加出版社</h2>#}
+                <div class="input-group row">
+                    <div class="input-group-addon">姓名</div>
+                    {#                    <div class="col-md-8">#}
+                    <input type="text" class="form-control" id="name" name="name" value={{ author_obj.name }}>
+                    {#                    </div>#}
+                </div>
+                <div class="input-group row">
+                    <div class="input-group">相关书籍</div>
+                    <ul class="list-group">
+                    {{ author.books.all }}
+                        {% for i in books %}
+                            {% if i in author_obj.books.all %}
+                                <li class="list-group-item">
+                                    <input type="checkbox" value={{ i.id }} name="book_id" checked>{{ i.title }}
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    <input type="checkbox" value={{ i.id }} name="book_id">{{ i.title }}
+                                </li>
+                            {% endif %}
+
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <button class="btn-primary input-group " type="submit">提交</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <title>Press List</title>
+    <style>
+        .title{
+            float: left;
+            font-size: 18px;
+        }
+        .add {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+<div class="clearfix container-fluid panel-heading">
+    <div class="title" style="font-weight: bolder">出版社列表</div>
+    <a class="btn-primary btn add" href="/add_press/">添加</a>
+</div>
+    
+
+    <div class="panel-body">
+        <table class="table table-bordered text-center">
+           <thead>
+           <tr class="text-center">
+               <th class="text-center">序号</th>
+               <th class="text-center">出版社id</th>
+               <th class="text-center">名称</th>
+               <th class="text-center">操作</th>
+           </tr>
+           </thead>
+            <tbody>
+            {% for i in press_obj %}
+            <tr>
+                <td> {{ forloop.counter }}</td>
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>
+                    <a class="btn-success btn" href="/edit_press/?id={{ i.id }}">编辑</a>
+                    <a class="btn-danger btn" href="/delete_press/?id={{ i.id }}">删除</a>
+                </td>
+            </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+
+</html>

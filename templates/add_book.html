@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <title>add_book</title>
+    <style>
+        .panel {
+            margin-top: 80px;
+        }
+        .input-group {
+            margin-top:20px;
+        }
+        .btn-primary {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container row">
+    <div class="col-md-4 col-md-offset-4 row panel">
+        <div>
+            <h3 class="text-center">添加书籍</h3>
+            <form class="form-horizontal" action="/add_book/" method="post">
+            {% csrf_token %}
+                {#    <h2 class="col-md-2 control-label">添加出版社</h2>#}
+                <div class="input-group row">
+                    <div class="input-group-addon">书名</div>
+                    {#                    <div class="col-md-8">#}
+                    <input type="text" class="form-control" id="book" name="book_name" placeholder="书籍名称">
+                    {#                    </div>#}
+                </div>
+                <div class="input-group row">
+                    <div class="input-group-addon">出版社</div>
+                    {#                    <div class="col-md-8">#}
+                    <select name="press_id" id="" class="form-control">
+                        {% for p in press %}
+                            <option value="{{ p.id }}">{{ p.name }}</option>
+                        {% endfor %}
+                    </select>
+{#                    <input type="" class="form-control" id="name" name="name" placeholder="出版社名称">#}
+                    {#                    </div>#}
+                </div>
+
+                <button class="btn-primary input-group " type="submit">提交</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

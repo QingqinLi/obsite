@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <title>add_author</title>
+    <style>
+        .panel {
+            margin-top: 80px;
+        }
+
+        .input-group {
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container row">
+    <div class="col-md-4 col-md-offset-4 row panel">
+        <div>
+            <h3 class="text-center">添加作者</h3>
+            <form class="form-horizontal" action="/add_author/" method="post">
+                {#    <h2 class="col-md-2 control-label">添加出版社</h2>#}
+                <div class="input-group row">
+                    <div class="input-group-addon">姓名</div>
+                    {#                    <div class="col-md-8">#}
+                    <input type="text" class="form-control" id="name" name="name" placeholder="作者姓名">
+                    {#                    </div>#}
+                </div>
+                <div class="input-group row" >
+                <div class="input-group">相关书籍</div>
+                    <ul class="list-group">
+                        {% for i in books %}
+                            <li class="list-group-item"><input type="checkbox"
+                                                               value={{ i.id }} name="book_id">{{ i.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <button class="btn-primary input-group " type="submit">提交</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

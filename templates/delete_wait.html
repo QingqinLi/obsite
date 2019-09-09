@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>delete</title>
+</head>
+<body>
+<p>删除成功，<span id="s1">3</span>秒后跳转到列表页面</p>
+
+<script src="/static/jquery-3.4.1.min.js"></script>
+<script>
+    var currentNum = document.getElementById('s1').innerText;
+
+    var t2 = setInterval(function () {
+        currentNum = document.getElementById('s1').innerText;
+        document.getElementById('s1').innerText = currentNum - 1;
+        if (currentNum == 1){
+            clearInterval(t2);
+            location.href = '/book_list/'
+        }
+    }, 1000)
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+</head>
+<body>
+{{ person }}
+<span>{{ person.name }}</span>
+{{ person.items }}
+<div>
+    {{ hobby }}
+    {{ hobby.3 }}
+</div>
+<div>
+    {{ putongren.name }}
+    {{ putongren.dream }}
+</div>
+{{ s12|default:"要你管" }}
+{{ hobby.2| upper }}
+{{ hobby|join:'_' }}
+{{ hobby|length }}
+<div>
+    {{ filesize|filesizeformat }}
+    {{ dr|slice:"-1:6:-1" }}
+    {{ now|date:'Y-m-d H:i:s' }}
+    {{ now|date }}
+    {{ a_html|safe }}
+    {{ dr|truncatechars:8 }}
+    {{ s2|cut:' ' }}
+    {{ now|timesince }}
+    {{ now|timeuntil }}
+</div>
+<div>
+    {% load ooxx %}
+    {{ dr|add_sb }}
+    {{ dr|add_str:'hello' }}
+</div>
+
+<div>
+    <ul>
+        {% for user in user_list %}
+            <li>{{ user.name }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for l in l1 %}
+            <li>{{ forloop }}-{{ l }}</li>
+        {% endfor %}
+
+    </ul>
+    <table border="1">
+        <tbody>
+        {% for l in l1 %}
+            <tr>
+                {% for f in l %}
+                    {% if forloop.counter|divisibleby:'2' and forloop.parentloop.counter|divisibleby:"2" %}
+                        <td style="color: red">{{ f }}</td>
+                    {% else %}
+                        <td>{{ f }}</td>
+                    {% endif %}
+
+
+                {% endfor %}
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    {% if 10 > 5 and 5 > 1 %}
+        {{ "真 不可以使用连续判断" }}
+    {% else %}
+        {{ "假" }}
+    {% endif %}
+
+
+
+</div>
+
+<div>
+    {{ person.name }}
+
+
+
+    {{ person.name }}
+    {{ person.name }}
+    {{ person.name }}
+    {{ person.name }}
+
+    {{ person.name }}
+
+
+</div>
+<div>
+    {% with person.name as d %}
+    {{ d }}
+        {{ '重新命名' }}
+        {{ d }}
+        {{ d }}
+        {{ d }}
+    {% endwith %}
+</div>
+</body>
+
+</html>
