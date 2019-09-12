@@ -46,8 +46,9 @@
                 <td>{{ i.press.name }}</td>
                 <td>{{ i.authors }}</td>
                 <td>
-                    <a class="btn-success btn" href="/edit_book/?id={{ i.id }}">编辑</a>
-                    <a class="btn-danger btn" href="/delete_book/?id={{ i.id }}">删除</a>
+                    <a class="btn-success btn" href="/app01/edit_book/?id={{ i.id }}">编辑</a>
+{#                    <a class="btn-success btn" href="{% url 'app01:h---name' '2019' '12' %}">测试在html中的命名使用</a>#}
+                    <a class="btn-danger btn" href="/app01/delete_book/{{ i.id }}">删除</a>
                 </td>
             </tr>
             {%  endfor %}

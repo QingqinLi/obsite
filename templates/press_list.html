@@ -42,8 +42,8 @@
                 <td>{{ i.id }}</td>
                 <td>{{ i.name }}</td>
                 <td>
-                    <a class="btn-success btn" href="/edit_press/?id={{ i.id }}">编辑</a>
-                    <a class="btn-danger btn" href="/delete_press/?id={{ i.id }}">删除</a>
+                    <a class="btn-success btn" href="/app01/edit_press/?id={{ i.id }}">编辑</a>
+                    <a class="btn-danger btn" href="/app01/delete_press/{{ i.id }}">删除</a>
                 </td>
             </tr>
             {%  endfor %}

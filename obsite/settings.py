@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app01.apps.App01Config',
-]
+    'app_orm',
+    "logindemo",
 
+]
+from django.middleware.csrf import CsrfViewMiddleware
 # 中间件
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +52,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'about_middleware.my_middlewares.MD1',
+    # 'about_middleware.my_middlewares.MD2',
+    "logindemo.login_middleware.loginMd",
+
 ]
 
 ROOT_URLCONF = 'obsite.urls'

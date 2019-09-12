@@ -1,8 +1,10 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, reverse
 from app01.models import User, Press, Book, Author
+from app01 import models
 from obsite import settings
 import os
 import datetime
+
 
 # Create your views here.
 
@@ -193,6 +195,25 @@ def tFilter(request):
     ]
     return render(request, 'test.html', {'person': person, 'hobby': hobby, 'putongren': p, "filesize": filesize, 'dr': dr,
                                          'now': now, 'a_html': a_html, 's2': s2, "user_list": user_list, "l1": l1})
+
+
+def home(request, year, month):
+    print(year, month)
+    return HttpResponse("hello")
+
+
+def home2(request, *args):
+    print(*args)
+    print(reverse('app01:h', kwargs={'year': '2018', 'month': '10'}),)  # 命名在view中的使用
+    return HttpResponse("hi")
+
+
+def delete(request, table, del_id):
+    # 使用反射或字典去值
+    table_class = getattr(models, table.capitalize())
+    table_class.objects.get(id=del_id).delete()
+
+    return redirect(reverse("app01:"+ table))
 
 
 
