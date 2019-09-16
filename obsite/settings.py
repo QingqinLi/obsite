@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app01.apps.App01Config',
     'app_orm',
     "logindemo",
+    "about_form",
 
 ]
 from django.middleware.csrf import CsrfViewMiddleware
@@ -54,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'about_middleware.my_middlewares.MD1',
     # 'about_middleware.my_middlewares.MD2',
-    "logindemo.login_middleware.loginMd",
+    # "logindemo.login_middleware.loginMd",
 
 ]
 

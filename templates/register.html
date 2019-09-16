@@ -1,0 +1,89 @@
+{% extends 'login_base.html' %}
+{% block form_container %}
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="container login-box col-md-4 col-md-offset-4">
+            <div class="">
+                <h2 class="text-center">Register Page</h2>
+                <div class="input-group {% if form_obj.user.errors.0 %}has-error{% endif %}">
+                    <span class="input-group-addon" id="basic-addon1">{{ form_obj.user.label }}</span>
+                    <!--<i class="fa fa-mail-forward"></i>-->
+                    {{ form_obj.user }}
+
+                    {#                <input type="text" class="form-control" placeholder="your email address" name="email">#}
+                </div>
+                <span class="help-block">{{ form_obj.user.errors.0 }}</span>
+
+
+                <div class="input-group {% if form_obj.pwd.errors.0 %}has-error{% endif %}">
+                    <span class="input-group-addon">{{ form_obj.pwd.label }} </span>
+                    {{ form_obj.pwd }}
+                </div>
+                <span class="help-block">{{ form_obj.pwd.errors.0 }}</span>
+
+                <div class="input-group {% if form_obj.re_pwd.errors.0 %}has-error{% endif %}">
+                    <span class="input-group-addon">{{ form_obj.re_pwd.label }} </span>
+                    {{ form_obj.re_pwd }}
+                </div>
+            <span class="help-block">{{ form_obj.re_pwd.errors.0 }}</span>
+
+                <div class="input-group {% if form_obj.phone.errors.0 %}has-error{% endif %}">
+                    <span class="input-group-addon">{{ form_obj.phone.label }} </span>
+                    {{ form_obj.phone }}
+
+                </div>
+            <span class="help-block">{{ form_obj.phone.errors.0 }}</span>
+                {#             <div class="input-group">#}
+                {#                <span class="show-input">{{ form_obj.gender.label }} </span>#}
+                {#                {{ form_obj.gender }}#}
+                {#                <span class="help-block">{{ form_obj.gender.errors.0 }}</span>#}
+                {#            </div>#}
+                {#            <div class="input-group">#}
+                {#                <span class="show-input">{{ form_obj.hobby.label }} </span>#}
+                {#                {{ form_obj.hobby }}#}
+                {#                <span class="help-block">{{ form_obj.hobby.errors.0 }}</span>#}
+                {#            </div>#}
+
+
+                <button class="btn-success input-group" type="submit">注册</button>
+
+            </div>
+        </div>
+
+
+            {##}
+            {#    <p>#}
+            {#        {{ form_obj.user.label }}#}
+            {#        {{ form_obj.user }}#}
+            {#        <span style="color:red">{{ form_obj.user.errors.0 }}</span>#}
+            {#    </p>#}
+            {#    <p>#}
+            {#        {{ form_obj.pwd.label }}#}
+            {#        {{ form_obj.pwd }}#}
+            {#        <span style="color:red">{{ form_obj.pwd.errors.0 }}</span>#}
+            {#    </p>#}
+            {#    <p>#}
+            {#        {{ form_obj.re_pwd.label }}#}
+            {#        {{ form_obj.re_pwd }}#}
+            {#        <span style="color:red">{{ form_obj.re_pwd.errors.0 }}</span>#}
+            {#    </p>#}
+            {#    <p>#}
+            {#        {{ form_obj.phone.label }}#}
+            {#        {{ form_obj.phone }}#}
+            {#        <span style="color:red">{{ form_obj.phone.errors.0 }}</span>#}
+            {#    </p>#}
+            {##}
+            {#    <button> 注册 </button>  {# 用django的form不需要submit标签了。任意的button就可以了#}
+
+
+    </form>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+    $("input").focus(function () {
+        $(this).parent().removeClass("has-error");
+        $(this).parent().next().text("")
+    })
+    </script>
+{% endblock %}
+
+
