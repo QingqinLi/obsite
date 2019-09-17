@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app_orm',
     "logindemo",
     "about_form",
+    "about_auth",
 
 ]
 from django.middleware.csrf import CsrfViewMiddleware
@@ -144,3 +145,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+LOGIN_URL = '/about_auth/login_test/'
+AUTH_USER_MODEL = "about_auth.UserInfo"

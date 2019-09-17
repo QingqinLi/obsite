@@ -1,0 +1,43 @@
+{% include 'login_base.html' %}
+{% block form_container %}
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    <div class="container login-box col-md-4 col-md-offset-4">
+        <div class="">
+            <h2 class="text-center">Register Page</h2>
+            <div class="input-group {% if form_obj.username.errors %}has-error{% endif %}">
+                <span class="input-group-addon" id="basic-addon1">{{ form_obj.username.label }}</span>
+{#                <input type="text" class="form-control" placeholder="your email address" name="email">#}
+                {{ form_obj.username }}
+            </div>
+            <span class="help-block">{{ form_obj.username.errors.0 }}</span>
+
+
+            <div class="input-group {% if form_obj.password.errors %}has-error{% endif %}">
+                <span class="input-group-addon">{{ form_obj.password.label }} </span>
+                {{ form_obj.password }}
+            </div>
+            <span class="help-block">{{ form_obj.password.errors.0 }}</span>
+
+             <div class="input-group {% if form_obj.re_pwd.errors %}has-error{% endif %}">
+                <span class="input-group-addon">{{ form_obj.re_pwd.label }} </span>
+                {{ form_obj.re_pwd }}
+            </div>
+
+            <span class="help-block">{{ form_obj.re_pwd.errors.0 }}</span>
+
+            <button class="btn-success input-group" type="submit">注册</button>
+
+        </div>
+
+
+    </div>
+    </form>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $("input").focus(function () {
+            $(this).parent().removeClass("has-error");
+            $(this).parent().next().text("")
+        })
+    </script>
+{% endblock %}

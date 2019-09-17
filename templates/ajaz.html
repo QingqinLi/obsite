@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/static/ajax_setup.js"></script>
+<script>
+    $.ajax({
+        url: "{% url "about_ajax:ajax_test" %}",
+        type: "post",
+        {#headers:{'X-CSRFToken': $('[name="csrfmiddlewaretoken"]').val()},#}
+        data: {
+            name: "liqing",
+            age: 18,
+            hobby: JSON.stringify(["中文", "java", "python", "js"])
+        },
+        success:function (res) {
+            console.log(res)
+        },
+        error: function (res) {
+            console.log(res)
+        }
+
+    })
+</script>
+</body>
+
+</html>

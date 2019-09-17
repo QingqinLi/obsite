@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from about_form.forms import *
-
-
 # Create your views here.
+
+
 def register(request):
     form_obj = RegForm()
     if request.method == 'POST':

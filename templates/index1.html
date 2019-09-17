@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+{% csrf_token %}
+    <input type="text" id="i1">+
+    <input type="text" id="i2">=
+    <input type="text" id="i3">
+    <button id="b1">计算</button>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $("#b1").click(function () {
+       $.ajax({
+           {#注意点： url必须要有"" 使用反向解析的时候需要注意这个问题#}
+           url:"{% url "about_ajax:index" %}",
+           type: 'post',
+           data: {
+               csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val(),
+               i1: $("#i1").val(),
+               i2: $("#i2").val(),
+               {#csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),#}
+               {#i1: $("#i1").val(),#}
+               {#i2: $("#i2").val(),#}
+           },
+           success: function (res) {
+               $("#i3").val(res)
+           }
+       })
+    })
+</script>
+</html>

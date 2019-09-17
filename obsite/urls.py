@@ -18,12 +18,14 @@ from app01 import views
 from django.conf.urls import url, include
 
 urlpatterns = [
-    # path('login/', admin.site.urls),
+    url(r'login/', admin.site.urls),
     # url(r"^login/$", views.login),
     url(r'app01/', include("app01.urls", namespace='app01')),
     url(r'logindemo/', include("logindemo.urls", namespace="logindemo")),
     url(r'about_middleware/', include("about_middleware.urls", namespace="about_middleware")),
     url(r'about_form/', include("about_form.urls", namespace="about_form")),
+    url(r'about_auth/', include("about_auth.urls", namespace="about_auth")),
+    url(r'about_ajax/', include("about_ajax.urls", namespace="about_ajax")),
     # url(r"^index/$", views.index),
     # url(r"^press_list/$", views.press_list),
     # url(r"^add_press/$", views.add_press),
